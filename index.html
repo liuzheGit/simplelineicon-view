@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./simple-line-icon/css/simple-line-icons.css">
+  <style>
+    .cc {
+      padding: 6px;
+      text-align: center;
+
+    }
+
+    .cc span {
+      font-size: 26px;
+    }
+
+    .cc:nth-of-type(4n + 1) {
+      border-right: 1px solid;
+    }
+
+    .cc:nth-of-type(4n + 2) {
+      border-right: 1px solid;
+    }
+
+    .cc:nth-of-type(4n + 3) {
+      border-right: 1px solid;
+    }
+  </style>
+
+</head>
+<body>
+<div id="app">
+  <Button type="primary" @click="info">Display info prompt</Button>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm12">
+          <div class="form-group">
+            <label for="name" class="sr-only">Search:</label>
+            <input type="text" id="name" v-model="searchStr" placeholder="className" @input="check">
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div v-for="item in arr" class="cc col-sm3 col-md3 col-xs-3">
+        <span :class="item" @click="copy" data-clipboard-demo></span>
+        <p>{{item}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script src="./jquery.min.js"></script>
+<script src="./clipboard.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./vue.min.js"></script>
+<script src="//unpkg.com/iview/dist/iview.min.js"></script>
+<script>
+  var clipboardDemos = new ClipboardJS('[data-clipboard-demo]');
+  console.log(clipboardDemos);
+  clipboardDemos.on('success', function(e) {
+    console.log('success')
+  });
+  clipboardDemos.on('error', function(e) {
+    console.log('error')
+  });
+  let arr = ['icon-user', 'icon-people', 'icon-user-female', 'icon-user-follow', 'icon-user-following', 'icon-user-unfollow', 'icon-login', 'icon-logout', 'icon-emotsmile', 'icon-phone', 'icon-call-end', 'icon-call-in', 'icon-call-out', 'icon-map', 'icon-location-pin', 'icon-direction', 'icon-directions', 'icon-compass', 'icon-layers', 'icon-menu', 'icon-list', 'icon-options-vertical', 'icon-options', 'icon-arrow-down', 'icon-arrow-left', 'icon-arrow-right', 'icon-arrow-up', 'icon-arrow-up-circle', 'icon-arrow-left-circle', 'icon-arrow-right-circle', 'icon-arrow-down-circle', 'icon-check', 'icon-clock', 'icon-plus', 'icon-minus', 'icon-close', 'icon-event', 'icon-exclamation', 'icon-organization', 'icon-trophy', 'icon-screen-smartphone', 'icon-screen-desktop', 'icon-plane', 'icon-notebook', 'icon-mustache', 'icon-mouse', 'icon-magnet', 'icon-energy', 'icon-disc', 'icon-cursor', 'icon-cursor-move', 'icon-crop', 'icon-chemistry', 'icon-speedometer', 'icon-shield', 'icon-screen-tablet', 'icon-magic-wand', 'icon-hourglass', 'icon-graduation', 'icon-ghost', 'icon-game-controller', 'icon-fire', 'icon-eyeglass', 'icon-envelope-open', 'icon-envelope-letter', 'icon-bell', 'icon-badge', 'icon-anchor', 'icon-wallet', 'icon-vector', 'icon-speech', 'icon-puzzle', 'icon-printer', 'icon-present', 'icon-playlist', 'icon-pin', 'icon-picture', 'icon-handbag', 'icon-globe-alt', 'icon-globe', 'icon-folder-alt', 'icon-folder', 'icon-film', 'icon-feed', 'icon-drop', 'icon-drawer', 'icon-docs', 'icon-doc', 'icon-diamond', 'icon-cup', 'icon-calculator', 'icon-bubbles', 'icon-briefcase', 'icon-book-open', 'icon-basket-loaded', 'icon-basket', 'icon-bag', 'icon-action-undo', 'icon-action-redo', 'icon-wrench', 'icon-umbrella', 'icon-trash', 'icon-tag', 'icon-support', 'icon-frame', 'icon-size-fullscreen', 'icon-size-actual', 'icon-shuffle', 'icon-share-alt', 'icon-share', 'icon-rocket', 'icon-question', 'icon-pie-chart', 'icon-pencil', 'icon-note', 'icon-loop', 'icon-home', 'icon-grid', 'icon-graph', 'icon-microphone', 'icon-music-tone-alt', 'icon-music-tone', 'icon-earphones-alt', 'icon-earphones', 'icon-equalizer', 'icon-like', 'icon-dislike', 'icon-control-start', 'icon-control-rewind', 'icon-control-play', 'icon-control-pause', 'icon-control-forward', 'icon-control-end', 'icon-volume-1', 'icon-volume-2', 'icon-volume-off', 'icon-calendar', 'icon-bulb', 'icon-chart', 'icon-ban', 'icon-bubble', 'icon-camrecorder', 'icon-camera', 'icon-cloud-download', 'icon-cloud-upload', 'icon-envelope', 'icon-eye', 'icon-flag', 'icon-heart', 'icon-info', 'icon-key', 'icon-link', 'icon-lock', 'icon-lock-open', 'icon-magnifier', 'icon-magnifier-add', 'icon-magnifier-remove', 'icon-paper-clip', 'icon-paper-plane', 'icon-power', 'icon-refresh', 'icon-reload', 'icon-settings', 'icon-star', 'icon-symbol-female', 'icon-symbol-male', 'icon-target', 'icon-credit-card', 'icon-paypal', 'icon-social-tumblr', 'icon-social-twitter', 'icon-social-facebook', 'icon-social-instagram', 'icon-social-linkedin', 'icon-social-pinterest', 'icon-social-github', 'icon-social-google', 'icon-social-reddit', 'icon-social-skype', 'icon-social-dribbble', 'icon-social-behance', 'icon-social-foursqare', 'icon-social-soundcloud', 'icon-social-spotify', 'icon-social-stumbleupon', 'icon-social-youtube', 'icon-social-dropbox', 'icon-social-vkontakte', 'icon-social-steam']
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      arr: arr,
+      searchStr: null
+    },
+    methods: {
+      check(){
+        let str = this.searchStr.trim();
+        let res = arr.filter((item)=>{
+          return item.indexOf(str) >=0
+        });
+        this.arr = res;
+      },
+      copy(){
+
+      },
+      info () {
+        this.$Message.info('This is a info tip');
+      }
+    }
+  })
+</script>
